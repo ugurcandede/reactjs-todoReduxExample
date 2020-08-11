@@ -1,0 +1,39 @@
+{
+  "todos": [
+    {
+      "todoName": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "todoDate": "2020-08-11",
+      "categoryId": 2,
+      "todoDesc": "Duis elementum justo dolor, ac placerat mauris suscipit sed. Donec nec feugiat ligula. Cras mattis rhoncus vulputate. Praesent accumsan imperdiet ultricies. Cras ut orci sit amet enim rhoncus vehicula. Fusce tempor mattis velit pretium posuere. ",
+      "id": 1
+    },
+    {
+      "todoName": "Nullam rutrum interdum arcu ut iaculis.",
+      "todoDate": "0012-03-12",
+      "categoryId": 3,
+      "todoDesc": "Pellentesque finibus purus nec tempus placerat. Nunc nec est eu lacus tempor sollicitudin sed id urna. Donec porttitor, tortor at vulputate congue, lectus tellus lobortis massa, quis sodales odio velit ac dui. Praesent vehicula ullamcorper ligula, at ultricies arcu eleifend id. ",
+      "id": 2
+    },
+    {
+      "todoDesc": " Nam tempor faucibus ante eget ultrices. Phasellus ipsum ipsum, malesuada in laoreet nec, tempus volutpat eros. Vivamus faucibus enim ac felis tempus pulvinar. Mauris leo magna, consequat sed ipsum eu, elementum consequat turpis.",
+      "todoName": "Pellentesque at leo at ipsum condimentum egestas. ",
+      "categoryId": 1,
+      "todoDate": "2020-08-11",
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "categoryName": "Home"
+    },
+    {
+      "id": 2,
+      "categoryName": "Work"
+    },
+    {
+      "id": 3,
+      "categoryName": "School"
+    }
+  ]
+}
