@@ -2,10 +2,18 @@ import React from "react";
 import { Col, Row, Button, Form, FormGroup } from "reactstrap";
 import TextInput from "../toolbox/TextInput";
 import SelectInput from "../toolbox/SelectInput";
+import { useSelector } from "react-redux";
 
 const TodoDetail = ({ todo, categories, onSave, onChange, errors }) => {
+  const theme = useSelector((state) => state.themeReducer);
   return (
-    <Form onSubmit={onSave}>
+    <Form
+      style={{
+        backgroundColor: theme.backgroundColor,
+        color: theme.primaryTextColor,
+      }}
+      onSubmit={onSave}
+    >
       <h4>{todo.id ? "Update Todo" : "Add Todo"}</h4>
       <Row>
         <Col md={6}>
@@ -58,7 +66,15 @@ const TodoDetail = ({ todo, categories, onSave, onChange, errors }) => {
         </Col>
       </FormGroup>
       <FormGroup row>
-        <Button type="submit" onClick={onSave} color="info">
+        <Button
+          style={{
+            color: theme.primaryButtonTextColor,
+            backgroundColor: theme.primaryButtonColor,
+            border: "none",
+          }}
+          type="submit"
+          onClick={onSave}
+        >
           Save!
         </Button>
       </FormGroup>

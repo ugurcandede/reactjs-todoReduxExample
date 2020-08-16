@@ -1,13 +1,13 @@
 import * as actionTypes from "../actions/actionTypes";
 import initialState from "./initialState";
 
-const categoryListReducer = (state = initialState.categories, action) => {
+const themeReducer = (state = initialState.theme, action) => {
   switch (action.type) {
-    case actionTypes.GET_CATEGORIES_SUCCESS:
+    case actionTypes.SWITCH_THEME:
       return action.payload;
     default:
       return state;
   }
 };
 
-export default categoryListReducer;
+export default themeReducer;

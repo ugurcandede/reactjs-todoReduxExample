@@ -25,9 +25,9 @@ function AddOrUpdateTodo({
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setTodo(previousTodo => ({
+    setTodo((previousTodo) => ({
       ...previousTodo,
-      [name]: name === "categoryId" ? parseInt(value, 10) : value
+      [name]: name === "categoryId" ? parseInt(value, 10) : value,
     }));
 
     validate(name, value);
@@ -35,14 +35,14 @@ function AddOrUpdateTodo({
 
   function validate(name, value) {
     if (name === "todoName" && value === "") {
-      setErrors(previousErrors => ({
+      setErrors((previousErrors) => ({
         ...previousErrors,
-        todoName: "Must be the product name"
+        todoName: "Must be the product name",
       }));
     } else {
-      setErrors(previousErrors => ({
+      setErrors((previousErrors) => ({
         ...previousErrors,
-        todoName: ""
+        todoName: "",
       }));
     }
   }

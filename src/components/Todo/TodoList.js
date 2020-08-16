@@ -1,75 +1,87 @@
-import React, { Component } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
 import { Table, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as todoActions from "../../redux/actions/todoActions";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-class TodoList extends Component {
-  handleGetTodos() {
-    this.props.actions.getTodos();
-  }
+function TodoList(props) {
+  const theme = useSelector((state) => state.themeReducer);
 
-  componentDidMount() {
-    this.handleGetTodos();
-  }
+  const handleGetTodos = () => {
+    props.actions.getTodos();
+  };
 
-  handleDoneTodo(todo) {
+  useEffect(() => {
+    handleGetTodos();
+  }, []);
+
+  const handleDoneTodo = (todo) => {
     this.props.actions.removeTodo(todo);
-    setTimeout(() => {
-      this.handleGetTodos();
-    }, 50);
-  }
+    handleGetTodos();
+  };
 
-  render() {
-    return (
-      <div>
-        <Table responsive hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Date</th>
-              <th />
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.todos.map((t) => (
-              <tr key={t.id}>
-                <th scope="row">{t.id}</th>
-                <td>{t.todoName}</td>
-                <td>{t.todoDesc}</td>
-                <td>{t.todoDate}</td>
-                <td>
-                  <Link to={"/savetodo/" + t.id}>
-                    <Button outline color="success">
-                      Edit!
-                    </Button>
-                  </Link>
-                </td>
-                <td>
-                  <Button
-                    color="primary"
-                    onClick={() =>
-                      window.confirm(
-                        "\nAre You Sure You Want To Delete This Todo?\n"
-                      )
-                        ? this.handleDoneTodo(t)
-                        : null
-                    }
-                  >
-                    Done!
+  return (
+    <div>
+      <Table
+        style={{
+          backgroundColor: theme.backgroundColor,
+          color: theme.primaryTextColor,
+        }}
+        responsive
+        hover
+      >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th />
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {props.todos.map((t) => (
+            <tr key={t.id}>
+              <th scope="row">{t.id}</th>
+              <td>{t.todoName}</td>
+              <td>{t.todoDesc}</td>
+              <td>{t.todoDate}</td>
+              <td>
+                <Link to={"/savetodo/" + t.id}>
+                  <Button outline color="success">
+                    Edit!
                   </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
-    );
-  }
+                </Link>
+              </td>
+              <td>
+                <Button
+                  // color="primary"
+                  style={{
+                    color: theme.primaryButtonTextColor,
+                    backgroundColor: theme.primaryButtonColor,
+                    border: "none",
+                  }}
+                  onClick={() =>
+                    window.confirm(
+                      "\nAre You Sure You Want To Delete This Todo?\n"
+                    )
+                      ? handleDoneTodo(t)
+                      : null
+                  }
+                >
+                  Done!
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </div>
+  );
 }
 
 function mapStateToProps(state) {
