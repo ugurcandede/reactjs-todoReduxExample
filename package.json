@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "json-server -w -p2500 api/db.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
