@@ -1,7 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import { Navbar, Nav, NavItem, NavLink, CustomInput } from "reactstrap";
+import { Navbar, Nav, NavItem, NavLink, ButtonToggle } from "reactstrap";
 import logo from "../logo.svg";
+import moon from "../assets/moon.png";
+import sun from "../assets/sun.png";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { switchTheme } from "../redux/actions/themeActions";
@@ -53,16 +55,45 @@ const Navigation = () => {
           </p>
         </h4>
         <Nav className="ml-auto" navbar>
-          <NavItem>
-            <CustomInput
-              type="switch"
-              id="exampleCustomSwitch"
-              name="customSwitch"
-              label={theme.mode === "light" ? "🌚" : "🌕"}
-              onClick={() =>
-                theme.mode === "light" ? changeDark() : changeLight()
-              }
-            />
+          <NavItem
+            onClick={() =>
+              theme.mode === "light" ? changeDark() : changeLight()
+            }
+            style={{ paddingLeft: "2vmin" }}
+          >
+            {theme.mode === "light" ? (
+              <ButtonToggle
+                outline
+                style={{
+                  borderRadius: 50,
+                  borderColor: "rgb(35, 168, 217)",
+                  backgroundColor: "transparent",
+                }}
+              >
+                <img
+                  style={{ height: "2vmin" }}
+                  className="float-left"
+                  src={moon}
+                  alt="darkMode"
+                />
+              </ButtonToggle>
+            ) : (
+              <ButtonToggle
+                outline
+                style={{
+                  borderRadius: 50,
+                  borderColor: "rgb(128, 34, 217)",
+                  backgroundColor: "transparent",
+                }}
+              >
+                <img
+                  style={{ height: "2vmin" }}
+                  className="float-left"
+                  src={sun}
+                  alt="lightMode"
+                />
+              </ButtonToggle>
+            )}
           </NavItem>
           <NavItem>
             <NavLink>
